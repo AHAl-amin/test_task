@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+:root {
+  
+  --foreground: #171717;
+  --primary: #276EF1; /* Blue for buttons/accents */
+  --sidebar-bg: #FFFFFF;
+  --card-bg: #FFFFFF;
+  --text-primary: #1A1A1A;
+  --text-secondary: #8C8C8C;
+  --text-muted: #B0B0B0;
+  
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-sidebar: var(--sidebar-bg);
+  --color-card: var(--card-bg);
+  
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-poppins);
+}
+
+body {
+  
+  color: var(--foreground);
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins);
+}
+
+.poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Custom Utilities if needed */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
