@@ -9,7 +9,7 @@ const Navbar = () => {
     return (
         <header className="py-2 px-4 md:px-0">
             {/* Left : Welcome Text */}
-            <div className="lg:h-[88px] h-auto min-h-[68px] flex flex-wrap md:flex-nowrap items-center justify-between backdrop-blur-sm sticky top-0 z-40 gap-4 md:gap-0">
+            <div className="md:h-[88px] h-auto min-h-[68px] flex flex-wrap md:flex-nowrap items-center justify-between backdrop-blur-sm sticky top-0 z-40 gap-4 md:gap-0">
                 <div className="flex items-center gap-4 md:gap-12 flex-1">
                     <div className="ml-0 md:ml-4 flex-shrink-0">
                         <Image src={logo} width={32} height={28} alt="Logo" />
@@ -25,7 +25,7 @@ const Navbar = () => {
                 {/* Right: Actions */}
                 <div className="flex items-center gap-2 md:gap-6 h-full justify-end flex-1 md:flex-none w-full md:w-auto">
                     {/* Search */}
-                    <div className="relative group h-10 md:h-full text-gray-400 w-full md:w-auto flex-1 md:flex-none hidden md:block">
+                    <div className=" relative group h-10 md:h-full text-gray-400 w-full md:w-auto flex-1 md:flex-none block sm:hidden lg:block">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <Search className="h-4 w-4   transition-colors" />
                         </div>

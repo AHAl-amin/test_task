@@ -51,7 +51,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
 
 const HeroSection = () => {
     return (
-        <div className="w-full rounded-[30px] relative mb-8 overflow-hidden min-h-[450px]">
+        <div className="w-full rounded-[30px] relative mb-8 overflow-hidden min-h-[450px] ">
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center no-repeat"
@@ -61,10 +61,10 @@ const HeroSection = () => {
             />
 
             {/* Content Container */}
-            <div className="relative z-10 p-6 md:p-10 flex flex-col justify-between min-h-[450px] gap-8">
+            <div className="relative z-10 p-6 md:p4 flex flex-col justify-between min-h-[450px] gap-8">
                 {/* Title */}
                 <div>
-                    <h2 className="text-3xl md:text-5xl font-semibold text-white tracking-tight poppins max-w-lg leading-tight">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-[#FFFFFF]  poppins ">
                         The QB Fundamentals
                     </h2>
                 </div>
@@ -102,7 +102,7 @@ const HeroSection = () => {
 
                     {/* Floating Streak Card */}
                     <div className="bg-[#FFFFFFE5] rounded-[24px] p-5 h-auto lg:h-[200px] w-full md:w-[317px] pointer-events-auto shadow-lg shrink-0">
-                        <div className="flex justify-between items-center mb-3 ">
+                        <div className="flex justify-between items-center  ">
                             <span className="text-[11px] font-bold text-gray-900  tracking-wider">Active Streak</span>
                             <div className="flex items-center gap-1">
                                 <div className="  bg-linear-to-b from-[#FDB631] to-[#EC4213] text-[#FF5833] px-3 py-3 rounded-full text-[10px] font-bold">
@@ -113,7 +113,7 @@ const HeroSection = () => {
                         </div>
                         <div className="mb-4 ">
                             <div className="bg-[#FFFFFF] shadow-lg w-1/2 p-2 rounded-lg">
-                                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 font-poppins">12 Days</h3>
+                                <h3 className="text-3xl  font-bold text-gray-900 ">12 Days</h3>
                                 <p className="text-[11px] text-gray-400 font-medium whitespace-nowrap">Next milestone: 15 days</p>
                             </div>
                         </div>

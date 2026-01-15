@@ -12,28 +12,32 @@ export default function Home() {
   return (
     <div className="flex flex-col pb-4 h-full">
       {/* Hero Section */}
-      
-<HeroSection /> 
+
+      <HeroSection />
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 gap-8">
 
-        {/* Left Column (Main) */}
-        <div className="lg:col-span-8 flex flex-col gap-2">
-          <ContinueWatching />
-          <TodaysTasks />
+        {/* SECTION 1 */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 grid gap-4">
+            <ContinueWatching />
+            <TodaysTasks />
+          </div>
+
+          <div className="lg:col-span-1 grid gap-4">
+            <RecentActivity />
+            <CoachFeedback />
+          </div>
+        </div>
+
+        {/* SECTION 2 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <AnnouncementsPreview />
-        </div>
-
-        {/* Right Column (Sidebar-ish) */}
-        <div className="lg:col-span-4 flex flex-col gap-4">
-          <RecentActivity />
-          <CoachFeedback />
           <Leaderboard />
-          
         </div>
-        {/* <HeroSection /> */}
 
       </div>
+
     </div>
   );
 }

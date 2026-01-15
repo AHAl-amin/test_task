@@ -4,6 +4,7 @@ import SectionHeader from "./SectionHeader";
 import { Play } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { FaCalendar, FaCalendarAlt } from "react-icons/fa";
 
 const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
     const videoRef = useRef(null);
@@ -34,11 +35,11 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
                 {/* Custom Play Button Overlay - Only visible when not playing */}
                 {!isPlaying && (
                     <div
-                        className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10"
+                        className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center z-10"
                         onClick={handlePlay}
                     >
-                        <div className="w-8 h-8 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform">
-                            <Play size={12} fill="white" className="text-white ml-0.5" />
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/60 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                            <Play size={16} fill="white" className="text-white ml-1" />
                         </div>
                     </div>
                 )}
@@ -49,15 +50,18 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
             </div>
 
             <div className="mt-auto">
-                <div className="flex items-center justify-between text-[10px] text-gray-500 mb-1.5">
+                <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                        className={`h-full rounded-full ${status === 'Complete' ? 'bg-green-500' : 'bg-gradient-to-r from-[#7180DF] to-[#2C49FF]'}`}
+                        style={{ width: `${progress}%` }}
+                    ></div>
+                </div>
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 mt-1.5">
                     <span className="flex items-center gap-1">
-                        <span className={`w-2 h-2 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-blue-500'}`}></span>
+                        <span className={`w-2 h-2 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-[#2C49FF]'}`}></span>
                         {progress}% Complete
                     </span>
-                    <span>{dueDate}</span>
-                </div>
-                <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                    <div className={`h-full rounded-full ${status === 'Complete' ? 'bg-green-500' : 'bg-blue-500'}`} style={{ width: `${progress}%` }}></div>
+                    <span className="flex items-center gap1 text-xs"><FaCalendarAlt className="me-1.5" /> <span>{dueDate}</span></span>
                 </div>
             </div>
         </div>
@@ -70,21 +74,21 @@ const ContinueWatching = () => {
             title: "Review Approach Feedback",
             progress: 70,
             dueDate: "Due Today",
-            image: "https://images.unsplash.com/photo-1566933294063-25a3818a901d?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1574602904316-f84f62477265?q=80&w=600&auto=format&fit=crop",
             videoUrl: "https://v.ftcdn.net/01/43/50/73/240_F_143507322_Mz50QeuHAO2f5in4cb58a9XuVEQZc38o_ST.mp4"
         },
         {
             title: "Review Ghost Rush Technique feedback",
-            progress: 0,
+            progress: 40,
             dueDate: "Due Tomorrow",
-            image: "https://images.unsplash.com/photo-1517137884378-4222da33d06b?q=80&w=2669&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1574602904329-56e2f95fb15e?q=80&w=600&auto=format&fit=crop",
             videoUrl: "https://v.ftcdn.net/01/43/50/73/240_F_143507322_Mz50QeuHAO2f5in4cb58a9XuVEQZc38o_ST.mp4"
         },
         {
             title: "Film Breakdown: Elite Pass Rush",
             progress: 70,
             dueDate: "Due Today",
-            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=600&auto=format&fit=crop",
             videoUrl: "https://v.ftcdn.net/01/43/50/73/240_F_143507322_Mz50QeuHAO2f5in4cb58a9XuVEQZc38o_ST.mp4"
         }
     ];

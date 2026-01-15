@@ -1,15 +1,25 @@
+import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import { User } from "lucide-react";
 
-const LeaderboardItem = ({ rank, name, points, image }) => (
-    <div className="flex items-center justify-between mb-4 last:mb-0 p-2 hover:bg-white hover:shadow-sm rounded-xl transition-all">
-        <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-gray-400 w-4">#{rank}</span>
-            <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
-                <img src={image} alt={name} className="w-full h-full object-cover" />
+// Helper for diamond shape avatar
+const DiamondAvatar = ({ src, alt,i }) => (
+    <div className={`w-10 h-10 flex items-center justify-center filter drop-shadow-sm ${i==0 || i==1 ? 'ms-5 me-3':'ms-5 me-3'}`}>
+        <div className="w-8 h-8 relative">
+            <div className={`absolute inset-0  overflow-hidden border-2 border-white shadow-sm bg-gray-200 ${i==0 || i==1 ? 'transform rotate-45 rounded-[8px] scale-[1.75] transition-all':'border-[#FF0033] rounded-full scale-[1.5]'}`}>
+                <Image width={100} height={100} src={src} alt={alt} className={`w-full h-full object-cover transform ${i==0 || i==1 ? '-rotate-45':''}`} />
             </div>
+        </div>
+    </div>
+);
+
+const LeaderboardItem = ({ rank, name, points, image,i }) => (
+    <div className="flex items-center justify-between mb-3 px-4 py-3 bg-white hover:shadow-md rounded-2xl transition-all">
+        <div className="flex items-center gap-4">
+            <span className="text-sm font-bold text-gray-400 w-4">#{rank}</span>
+            <DiamondAvatar src={image} alt={name} i={i} />
             <div>
-                <h4 className="text-xs font-bold text-gray-900">{name}</h4>
+                <h4 className="text-sm font-bold text-gray-900">{name}</h4>
                 <p className="text-[10px] text-gray-400">{points}</p>
             </div>
         </div>
@@ -26,62 +36,57 @@ const Leaderboard = () => {
     ];
 
     return (
-        <div className="bg-transparent">
-            <SectionHeader title="Leaderboard" actionText="View More" />
+        <div className="bg-white/30 shadow shadow-blue-200 px-4 py-5 rounded-2xl">
+            <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-gray-800">Leaderboard</h3>
+                <button className="px-4 py-2.5 bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-white text-xs font-semibold rounded-full  transition-colors hover:cursor-pointer">
+                    View More
+                </button>
+            </div>
 
-            <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-gray-100 mb-6">
-                <p className="text-center font-bold text-gray-800 mb-6">Jan 2025</p>
+            <div className="rounded-2xl relative overflow-hidden ">
 
-                {/* Top 3 Visual - Simplified for CSS only without complex absolute positioning hell */}
-                <div className="flex items-end justify-center gap-4 mb-8 h-40">
-                    {/* 2nd Place */}
-                    <div className="flex flex-col items-center z-10">
-                        <div className="relative mb-2">
-                            <div className="w-12 h-12 rounded-full border-2 border-gray-200 overflow-hidden shadow-md">
-                                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2574&auto=format&fit=crop" className="w-full h-full object-cover" />
+
+                <div className="relative z-10">
+                    <div className="py-5 rounded-2xl mb-5" style={{
+                        backgroundSize: "cover",
+                        backgroundPosition: "bottom",
+                        backgroundRepeat: "no-repeat",
+                        backgroundImage: "url('/section/Frame 2147238986.svg')",
+                    }}>
+
+                    {/* Top 3 Podium */}
+                        <p className="text-center font-bold text-gray-800 mb-8">Jan 2025</p>
+                    <div className="flex items-end justify-center gap-2 mb-32 ">
+                        {/* 2nd Place */}
+                        <div className="flex flex-col items-center -mr-4 z-10 mb-4">
+                            <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
+                                <Image width={200} height={200} src="/section/Group 2085665490.png" alt="2nd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
                             </div>
-                            <span className="absolute -top-2 -right-1 text-2xl font-black text-gray-200 drop-shadow-sm font-outline-2">#2</span>
                         </div>
-                        <div className="bg-gradient-to-t from-gray-200 to-gray-100 w-16 h-24 rounded-t-lg flex flex-col items-center justify-end pb-2 shadow-inner">
-                            <div className="text-[10px] font-bold text-gray-600 text-center">Cameron C.</div>
-                            <div className="text-[10px] font-bold text-gray-500 bg-white/50 px-2 rounded-full mt-1">293</div>
+
+                        {/* 1st Place */}
+                        <div className="flex flex-col items-center z-20">
+                            <div className="relative w-[200px] h-[200px] transition-transform duration-300">
+                                <Image width={200} height={200} src="/section/Group 2085665474.png" alt="1st Place" className="w-full h-[300px] object-contain drop-shadow-xl -mt-10" />
+                            </div>
+                        </div>
+
+                        {/* 3rd Place */}
+                        <div className="flex flex-col items-center -ml-4 z-10 mb-4">
+                            <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
+                                <Image width={200} height={200} src="/section/Group 2085665491.png" alt="3rd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
+                            </div>
                         </div>
                     </div>
-
-                    {/* 1st Place */}
-                    <div className="flex flex-col items-center z-20 -mx-2">
-                        <div className="relative mb-2">
-                            <div className="w-16 h-16 rounded-full border-4 border-blue-500 overflow-hidden shadow-lg transform -translate-y-2">
-                                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop" className="w-full h-full object-cover" />
-                            </div>
-                            <span className="absolute -top-4 -right-2 text-3xl font-black text-blue-500 drop-shadow-sm">#1</span>
-                        </div>
-                        <div className="bg-gradient-to-t from-blue-500 to-blue-400 w-20 h-32 rounded-t-xl flex flex-col items-center justify-end pb-4 shadow-lg text-white relative overflow-hidden">
-                            <div className="absolute top-0 inset-x-0 h-full bg-gradient-to-b from-white/10 to-transparent"></div>
-                            <div className="text-xs font-bold text-center leading-tight">Marcus<br />Williams</div>
-                            <div className="text-xs font-bold text-blue-500 bg-white px-2 py-0.5 rounded-full mt-1 shadow-sm">327</div>
-                        </div>
                     </div>
 
-                    {/* 3rd Place */}
-                    <div className="flex flex-col items-center z-10">
-                        <div className="relative mb-2">
-                            <div className="w-12 h-12 rounded-full border-2 border-orange-200 overflow-hidden shadow-md">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2564&auto=format&fit=crop" className="w-full h-full object-cover" />
-                            </div>
-                            <span className="absolute -top-2 -right-1 text-2xl font-black text-orange-200 drop-shadow-sm">#3</span>
-                        </div>
-                        <div className="bg-gradient-to-t from-orange-200 to-orange-100 w-16 h-20 rounded-t-lg flex flex-col items-center justify-end pb-2 shadow-inner">
-                            <div className="text-[10px] font-bold text-gray-600 text-center">Cameron C.</div>
-                            <div className="text-[10px] font-bold text-gray-500 bg-white/50 px-2 rounded-full mt-1">238</div>
-                        </div>
+                    {/* List Items */}
+                    <div className="flex flex-col">
+                        {leaders.map((l, i) => (
+                            <LeaderboardItem key={i} {...l} i={i} />
+                        ))}
                     </div>
-                </div>
-
-                <div className="flex flex-col gap-1">
-                    {leaders.map((l, i) => (
-                        <LeaderboardItem key={i} {...l} />
-                    ))}
                 </div>
             </div>
         </div>

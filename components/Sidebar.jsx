@@ -58,7 +58,7 @@ const Sidebar = () => {
 
 
             {/* Main Menu */}
-            <nav className="flex-1 flex flex-col gap-6 w-full items-center">
+            <nav className="flex-1 flex flex-col gap-2 w-full items-center">
                 {menuItems.map((item, index) => {
                     const active = isActive(item.href);
                     return (
@@ -77,7 +77,7 @@ const Sidebar = () => {
             </nav>
 
             {/* Bottom Menu */}
-            <div className="flex flex-col gap-6 w-full items-center mt-auto border-t border-[#141B341A]  ">
+            <div className="flex flex-col gap-2 w-full items-center mt-auto border-t border-[#141B341A] pt-4  ">
                 {bottomItems.map((item, index) => {
                     const active = isActive(item.href);
                     return (
