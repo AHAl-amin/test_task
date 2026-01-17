@@ -54,7 +54,7 @@ const CoachFeedback = () => {
     ];
 
     return (
-        <div className="bg-blue-50/50 p-6 rounded-[2rem] border border-blue-100">
+        <div className="p-6 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 h-fit">
             <SectionHeader title="Coach Feedback" actionText="View More" />
             <div className="flex flex-col">
                 {feedbacks.map((f, i) => (

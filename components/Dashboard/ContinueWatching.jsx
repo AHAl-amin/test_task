@@ -18,14 +18,14 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
     };
 
     return (
-        <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-3 min-w-[200px] flex-1">
-            <div className="relative h-28 rounded-xl overflow-hidden group cursor-pointer">
+        <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-3  min-w-[200px] flex-1">
+            <div className="relative max-h-[249px] rounded-xl overflow-hidden group cursor-pointer">
                 <video
                     ref={videoRef}
                     src={videoUrl}
                     poster={image}
-                    className="w-full h-full object-cover rounded-xl"
-
+                    className="w-full h-[127px] object-cover rounded-xl"
+                    
                     playsInline
                     onPause={() => setIsPlaying(false)}
                 >
@@ -45,23 +45,23 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
                 )}
             </div>
 
-            <div>
-                <h4 className="font-bold text-xs text-gray-800 line-clamp-2 min-h-[32px]">{title}</h4>
-            </div>
 
-            <div className="mt-auto">
-                <div className="w-full h-2.5 bg-gray-100 rounded-full overflow-hidden">
+            <div className="mt-auto space-y-3">
+                <div>
+                    <h4 className="font-medium text-[12px] text-[#141B34] w-full  ">{title}</h4>
+                </div>
+                <div className="w-full h-2.5 bg-[#C4D4FD] rounded-full overflow-hidden">
                     <div
                         className={`h-full rounded-full ${status === 'Complete' ? 'bg-green-500' : 'bg-gradient-to-r from-[#7180DF] to-[#2C49FF]'}`}
                         style={{ width: `${progress}%` }}
                     ></div>
                 </div>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 mt-1.5">
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 ">
                     <span className="flex items-center gap-1">
-                        <span className={`w-2 h-2 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-[#2C49FF]'}`}></span>
+                        <span className={`w-3 h-3 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-gradient-to-b from-[#7180DF] to-[#2C49FF] '}`}></span>
                         {progress}% Complete
                     </span>
-                    <span className="flex items-center gap1 text-xs"><FaCalendarAlt className="me-1.5" /> <span>{dueDate}</span></span>
+                    <span className="flex items-center gap1 text-xs"><FaCalendarAlt className="me-1.5 text-gray-400" /> <span>{dueDate}</span></span>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@ const ContinueWatching = () => {
         },
         {
             title: "Review Ghost Rush Technique feedback",
-            progress: 40,
+            progress: 10,
             dueDate: "Due Tomorrow",
             image: "https://images.unsplash.com/photo-1574602904329-56e2f95fb15e?q=80&w=600&auto=format&fit=crop",
             videoUrl: "https://v.ftcdn.net/01/43/50/73/240_F_143507322_Mz50QeuHAO2f5in4cb58a9XuVEQZc38o_ST.mp4"
@@ -94,7 +94,7 @@ const ContinueWatching = () => {
     ];
 
     return (
-        <div className="mb-8">
+        <div className=" ">
             <SectionHeader title="Continue Where You Left Off" actionText="View More" />
             <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
                 {items.map((item, i) => (

@@ -1,23 +1,28 @@
 import Image from "next/image";
 import SectionHeader from "./SectionHeader";
-import { ListFilter } from "lucide-react";
+
+import { PiFaders } from "react-icons/pi";
 
 const ActivityItem = ({ icon: Icon, title, description, time, type }) => {
     return (
-        <div className="flex gap-4 mb-6 last:mb-0">
+        <div className="flex gap-4 p-3 rounded-xl transition-all duration-300 hover:bg-white/40 cursor-default">
             <div className="flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-500">
-                  <Image width={50} height={50} src="/famicons_logo-vue.png" alt={title} className="w-1/2 h-1/2" />
+                    {type === "feedback" ? (
+                        <Image width={50} height={50} src="/famicons_logo-vue2.png" alt={title} className="w-1/2 h-1/2" />
+                    ) : (
+                        <Image width={50} height={50} src="/famicons_logo-vue.png" alt={title} className="w-1/2 h-1/2" />
+                    )}
                 </div>
             </div>
             <div className="flex-1">
                 <div className="flex justify-between items-start">
-                    <h4 className="font-bold text-sm text-gray-900">{title}</h4>
+                    <h4 className="font-bold text-sm text-gray-900 w-2/3">{title}</h4>
                     <span className="text-[10px] text-[#2C4AFF]">{time}</span>
                 </div>
                 <p className="text-xs text-gray-500 mt-1">{description}</p>
                 {type === "feedback" && (
-                    <button className="mt-2 px-3 py-3 bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-white text-[10px] font-bold rounded-full">
+                    <button className="mt-2 px-5 py-2.5 bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-white text-[10px] font-bold rounded-full">
                         View Feedback
                     </button>
                 )}
@@ -28,26 +33,27 @@ const ActivityItem = ({ icon: Icon, title, description, time, type }) => {
 
 const RecentActivity = () => {
     return (
-        <div className="mb-6 bg-blue-50/50 p-6 rounded-[2rem] border border-blue-100">
-            <div className="flex items-center justify-between mb-6">
+        <div className="px-6 py-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 h-fit">
+            <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-bold text-gray-900">Recent Activity</h3>
-                    <span className="bg-red-50 text-red-500 text-[10px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span> LIVE
+                    <h3 className="text-xl font-semibold text-[#141B34]">Recent Activity</h3>
+                    <span className="bg-red-200 text-red-500 text-[10px] font-bold  p-1 rounded-full flex items-center gap-1">
+                        <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                     </span>
+                    <span className="text-[10px] text-red-500 font-bold">LIVE</span>
                 </div>
 
-                <div className="flex gap-2">
-                    <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-blue-500 shadow-sm">
-                        <ListFilter size={14} />
+                <div className="flex gap-2 items-center">
+                    <button className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center text-gray-600 hover:text-blue-500 shadow-sm">
+                        <PiFaders size={20} />
                     </button>
-                    <button className="px-3 py-1 bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-white text-xs font-bold rounded-full shadow-md shadow-blue-200">
+                    <button className="px-5 py-[10px] text-[10px] font-medium bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-[#FFFFFF] rounded-full shadow-md shadow-blue-200">
                         View More
                     </button>
                 </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col -mx-3">
                 <ActivityItem
                     title="Coach Bronson added a task"
                     description="Check the Itinerary for optimization suggestions."

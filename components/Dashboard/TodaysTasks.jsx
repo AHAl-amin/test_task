@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import SectionHeader from "./SectionHeader";
-import { Upload, Bell, CheckCircle, Play, Clock } from "lucide-react";
-import { FaCalendarAlt, FaCheckCircle } from "react-icons/fa";
+import { Upload, Bell, CheckCircle, Play, Clock, Check } from "lucide-react";
+import { FaCalendarAlt, FaCheck, FaCheckCircle, FaLongArrowAltUp } from "react-icons/fa";
 import clsx from "clsx";
+import { TbBellFilled } from "react-icons/tb";
 
 const CalendarStrip = () => {
     const [activeIndex, setActiveIndex] = useState(3);
@@ -20,7 +21,7 @@ const CalendarStrip = () => {
     ];
 
     return (
-        <div className="flex justify-between items-center p-4 rounded-2xl mb-6 ">
+        <div className="flex justify-between items-center  rounded-2xl mb-3 ">
             {days.map((d, i) => {
                 const isActive = i === activeIndex;
                 return (
@@ -28,9 +29,9 @@ const CalendarStrip = () => {
                         key={i}
                         onClick={() => setActiveIndex(i)}
                         className={clsx(
-                            "flex flex-col items-center justify-center w-18 h-18 rounded-xl transition-all cursor-pointer border backdrop-blur-sm hover:shadow-lg hover:shadow-blue-200 relative",
+                            "flex flex-col items-center justify-center w-[96px] h-[79px] rounded-xl transition-all cursor-pointer border backdrop-blur-sm hover:shadow-lg  hover:shadow-blue-200 relative ",
                             isActive
-                                ? "bg-white text-gray-900 shadow-lg shadow-blue-200 border-transparent ring-2 ring-blue-500/10"
+                                ? "bg-white text-gray-900 shadow-lg shadow-blue-200 border-transparent  ring-blue-500/10"
                                 : "bg-white/50 border-gray-50 hover:bg-white text-gray-400"
                         )}
                     >
@@ -47,11 +48,11 @@ const CalendarStrip = () => {
 
 const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, actionType, status }) => {
     return (
-        <div className="group flex items-center justify-between p-4 mb-3 rounded-2xl hover:bg-white/50 transition-all duration-300 hover:shadow shadow-blue-200  cursor-pointer ">
+        <div className="group flex items-center justify-between p-[12px]  mb-3 rounded-2xl hover:bg-white/50 transition-all duration-300    cursor-pointer ">
             {/* Left: Title & Subtitle */}
             <div className="flex flex-col gap-1.5 flex-2">
                 <div className="flex items-center gap-3">
-                    <h4 className="font-bold text-[15px] text-gray-900">{title}</h4>
+                    <h4 className="font-medium text-[14px] text-gray-900">{title}</h4>
                     {/* Tags */}
                     {label && (
                         <span className="text-[10px] px-2.5 py-1 bg-gray-200/50 text-gray-600 rounded-full font-semibold">
@@ -59,15 +60,15 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
                         </span>
                     )}
                     {status === 'live' && (
-                        <span className="text-[10px] px-2.5 py-1 bg-red-100/50 text-red-500 rounded-full font-bold flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span> Live
+                        <span className="text-[10px] px-2.5 py-1 bg-[#FFFFFFA6]/80 text-red-500 rounded-full font-bold flex items-center gap-1.5">
+                            <span className="w-3 h-3 bg-red-500 rounded "></span> Live
                         </span>
                     )}
                 </div>
 
                 {/* Subtitle with Dot */}
                 <div className="flex items-center gap-2 text-xs text-gray-500 font-medium">
-                    <div className={clsx("w-2.5 h-2.5 rounded-sm shadow-sm", status === 'completed' ? 'bg-[#5C8FF7]' : status === 'live' ? 'bg-amber-400' : 'bg-[#5C8FF7]')}></div>
+                    <div className={clsx("w-3 h-3 rounded-sm shadow-sm", status === 'completed' ? 'bg-[#5C8FF7]' : status === 'live' ? 'bg-gradient-to-b from-[#F7E75C] to-[#CC7B1F]' : 'bg-gradient-to-b from-[#7180DF] to-[#2C49FF]')}></div>
                     <span>Hawaii Trench Warriors</span>
                 </div>
             </div>
@@ -75,9 +76,11 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
             {/* Center: Time/Status */}
             <div className="flex items-start gap-6 mr-8 min-w-[120px] justify-end flex-1 ">
                 {status === 'completed' ? (
-                    <div className="flex items-center gap-1.5 text-green-500 text-sm font-bold py-1.5 rounded-full">
-                        <FaCheckCircle size={16} className="fill-current text-green-[#18952D]" />
-                        <span className="text-green-[#18952D]">Complete</span>
+                    <div className="flex items-center gap-1.5  text-sm  py-1.5 rounded-full">
+                        <div className="bg-[#18952D]/30 w-5 h-5 flex items-center justify-center rounded-full">
+                            <FaCheck size={10} className="fill-current text-[#18952D] " />
+                        </div>
+                        <span className="text-[#18952D]">Complete</span>
                     </div>
                 ) : (
                     <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
@@ -92,20 +95,71 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
             {/* Right: Action Button */}
             <div className="flex-1 flex justify-end">
                 {status === "completed" ? (
-                    <div className="shadow-md shadow-gray-200 rounded-full w-fit">
-                        <button className="px-6 py-2.5 rounded-full bg-linear-to-b from-[#b0b0b0] to-[#7a7a7a] text-white text-xs font-bold shadow-sm hover:opacity-90 transition-opacity">
-                            Done
-                        </button>
-                    </div>
+                                    <div className="shadow-md shadow-gray-200 rounded-full w-fit">
+                                        <button className="px-6 py-2.5 rounded-full text-white text-[10px] font-medium shadow-sm cursor-pointer
+                    relative overflow-hidden flex items-center justify-center min-h-[34px]">
+
+                                            {/* Base body */}
+                                            <div className="absolute inset-0 rounded-full
+                      bg-linear-to-b from-[#DDDDDD] to-[#7a7a7a]" />
+
+                                            {/* Top gradient border (rounded) */}
+                                            <div className="absolute top-0 inset-x-0 h-[2px]
+                      bg-gradient-to-r from-[#CACACA] via-[#919893] to-[#D8D8D8]
+                      rounded-t-full rounded-l-full rounded-r-full" />
+
+                                            {/* Inner shine line (rounded) */}
+                                            {/* <div className="absolute top-[2px] inset-x-0 h-px
+                      bg-white/30 rounded-t-full" /> */}
+
+                                            <span className="relative z-10">Done</span>
+                                        </button>
+                                    </div>
+
+
+
+    //                 <div className="w-fit">
+    //                     <button
+    //                         className="
+    //   relative overflow-hidden
+    //   rounded-full
+    //   px-10 py-2
+    //   text-white text-2xl font-medium
+    //   bg-gradient-to-b from-[#DDDDDD] to-[#919893]
+    //   shadow-md
+    // "
+    //                     >
+    //                         {/* Top soft highlight */}
+    //                         <div
+    //                             className="
+    //     pointer-events-none
+    //     absolute top-0 left-0 w-full
+    //     h-[10%]
+    //     bg-gradient-to-r
+    //     from-[#CACACA]
+    //     via-[#D8D8D8]
+    //     to-[#CACACA]
+    //     rounded-t-full
+    //   "
+    //                         />
+
+    //                         <span className="relative z-10">Done</span>
+    //                     </button>
+    //                 </div>
+
+
+
+
+
                 ) : (
                     <button className={clsx(
-                        "px-6 py-2.5 text-xs font-bold rounded-full  transition-all flex items-center gap-2 shadow-lg shadow-blue-200/50 hover:shadow-blue-300 hover:-translate-y-0.5",
+                        "px-6 py-2.5 text-[10px] font-medium rounded-full  transition-all flex items-center gap-2 shadow-lg shadow-blue-200/50 cursor-pointer ",
                         actionType === 'primary'
                             ? 'bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-white'
                             : 'bg-white text-gray-600 border border-gray-100 hover:bg-gray-50'
                     )}>
-                        {action === 'Upload' && <Upload size={14} />}
-                        {action === 'Remind Me' && <Bell size={14} />}
+                        {action === 'Upload' && <FaLongArrowAltUp className="bg-white/40 p-1 rounded-full" size={20} />}
+                        {action === 'Remind Me' && <TbBellFilled size={20} className="bg-white/40 p-1 rounded-full" />}
                         {action === 'Start' && <Play size={10} fill="currentColor" />}
                         {action}
                     </button>
@@ -117,16 +171,16 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
 
 const TodaysTasks = () => {
     return (
-        <div className="bg-white/10 backdrop-blur-sm  rounded-2xl shadow-inner shadow-white/70">
+        <div className="">
 
-            <div className="mb-8 p-6 rounded-2xl shadow-sm border border-gray-100">
+            <div className=" px-6 pt-6 rounded-2xl shadow-sm border border-gray-100 bg-white/20 backdrop-blur-sm">
                 <SectionHeader title="Todays tasks" actionText="View Entire Schedule" />
                 <CalendarStrip />
 
                 <div className="flex flex-col">
                     <TaskRow
                         title="Linebacker Drills"
-                        label="Video Breakdown Roster"
+                        label="Video submission required"
                         time="Due Today"
                         action="Upload"
                         actionType="primary"

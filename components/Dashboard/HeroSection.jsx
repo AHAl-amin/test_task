@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Users, Trophy, ChevronUp, Flame } from "lucide-react";
 import banner from "../../public/images/banner.png";
 import { FaArrowTrendUp } from "react-icons/fa6";
 import Image from "next/image";
 import fire from "../../public/images/fire.png";
+import elementsIcon from "@/public/images/elements.svg";
 
 
 const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", progress, color = "blue" }) => (
@@ -12,15 +15,19 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
             <div className="flex gap-3 items-center w-full px-2">
                 {Icon && (
                     <div className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 shrink-0">
-                        <Icon size={16} />
+                        {Icon.src ? (
+                            <Image src={Icon} width={16} height={16} alt={title} />
+                        ) : (
+                            <Icon size={16} />
+                        )}
                     </div>
                 )}
                 <div>
-                    <p className="text-[10px] text-[#141B34B2] font-medium mb-0.5">{title}</p>
+                    <p className="text-[12px] text-[#141B34B2] font-medium mb-0.5">{title}</p>
                     <div className="flex items-end gap-1">
                         <h3 className="text-xl font-bold text-[#141B34]">{value}</h3>
                         {subValue && (
-                            <span className={`text-[10px] font-semibold px-1 py-0.5 rounded-full flex gap-1 items-center ${trend === 'up' ? 'text-green-600' : 'text-gray-500'}`}>
+                            <span className={`text-[11px] font-semibold px-1 py-0.5 rounded-full flex gap-1 items-center ${trend === 'up' ? 'text-green-600' : 'text-gray-500'}`}>
                                 {subValue}
                                 {trend === 'up' && <FaArrowTrendUp size={10} />}
                             </span>
@@ -32,15 +39,34 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
         {type === "progress" && (
             <div className="flex items-center justify-between gap-4 w-full px-2">
                 <div>
-                    <p className="text-[10px] text-[#141B34B2] font-medium mb-0.5">{title}</p>
-                    {subValue && <p className="text-[9px] text-[#141b34a6]">{subValue}</p>}
+                    <p className="text-[12px] text-[#141B34B2] font-bold mb-0.5">{title}</p>
+                    {subValue && <p className="text-[11px] text-[#141b34a6]">{subValue}</p>}
                 </div>
-                <div className="relative w-10 h-10 shrink-0">
-                    <svg className="w-full h-full transform -rotate-90">
-                        <circle cx="20" cy="20" r="16" stroke="#f3f4f6" strokeWidth="4" fill="transparent" />
-                        <circle cx="20" cy="20" r="16" stroke={color === "green" ? "#22c55e" : "#5C8FF7"} strokeWidth="4" fill="transparent" strokeDasharray={100} strokeDashoffset={100 - (100 * progress) / 100} strokeLinecap="round" />
+                <div className="relative w-12 h-12 shrink-0">
+                    <svg className="w-full h-full -rotate-[180deg]" viewBox="0 0 40 40">
+                        <defs>
+                            <linearGradient id={`grad-${title.replace(/\s+/g, '-')}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stopColor={color === "green" ? "#B9F1D0" : "#83AFFF"} />
+                                <stop offset="100%" stopColor={color === "green" ? "#22c55e" : "#276EF1"} />
+                            </linearGradient>
+                        </defs>
+                        {/* Background arc */}
+                        <circle
+                            cx="20" cy="20" r="16"
+                            stroke="#f3f4f6" strokeWidth="4" fill="transparent"
+                            strokeDasharray="67 33.5" strokeOpacity="1" strokeLinecap="round"
+                        />
+                        {/* Progress arc */}
+                        <circle
+                            cx="20" cy="20" r="16"
+                            stroke={`url(#grad-${title.replace(/\s+/g, '-')})`}
+                            strokeWidth="4" fill="transparent"
+                            strokeDasharray="67 33.5"
+                            strokeDashoffset={67 - (67 * progress) / 100}
+                            strokeLinecap="round"
+                        />
                     </svg>
-                    <span className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-[#141B34]">
+                    <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-[#141B34] mt-[2px]">
                         {progress}%
                     </span>
                 </div>
@@ -54,17 +80,19 @@ const HeroSection = () => {
         <div className="w-full rounded-[30px] relative mb-8 overflow-hidden min-h-[450px] ">
             {/* Background Image */}
             <div
-                className="absolute inset-0 bg-cover bg-center no-repeat"
+                className="absolute inset-0 bg-cover bg-center no-repeat   rounded-[24px]"
                 style={{
                     backgroundImage: `url(${banner.src})`,
                 }}
             />
+            {/* Gradient Overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#FFFFFF] via-[#FFFFFF]/50 to-transparent border-x border-b" />
 
             {/* Content Container */}
-            <div className="relative z-10 p-6 md:p4 flex flex-col justify-between min-h-[450px] gap-8">
+            <div className="relative z-10 p-6  flex flex-col justify-between min-h-[450px] gap-8">
                 {/* Title */}
                 <div>
-                    <h2 className="text-3xl md:text-5xl font-semibold text-[#FFFFFF]  poppins ">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-[#FFFFFF] mt-5  poppins ">
                         The QB Fundamentals
                     </h2>
                 </div>
@@ -84,7 +112,7 @@ const HeroSection = () => {
                         <StatItem
                             title="Projected Ranking"
                             value="#5"
-                            icon={Trophy}
+                            icon={elementsIcon}
                         />
                         <StatItem
                             title="Consistency Score"
@@ -112,9 +140,9 @@ const HeroSection = () => {
                             </div>
                         </div>
                         <div className="mb-4 ">
-                            <div className="bg-[#FFFFFF] shadow-lg w-1/2 p-2 rounded-lg">
-                                <h3 className="text-3xl  font-bold text-gray-900 ">12 Days</h3>
-                                <p className="text-[11px] text-gray-400 font-medium whitespace-nowrap">Next milestone: 15 days</p>
+                            <div className="bg-[#FFFFFF] shadow-md w-fit  ">
+                                <h3 className="text-[28px]  font-bold text-gray-900 ">12 Days</h3>
+                                <p className="text-[11px] text-gray-600 font-medium whitespace-nowrap">Next milestone: 15 days</p>
                             </div>
                         </div>
                         <div className="flex justify-between items-center text-center">
