@@ -6,6 +6,8 @@ import { Upload, Bell, CheckCircle, Play, Clock, Check } from "lucide-react";
 import { FaCalendarAlt, FaCheck, FaCheckCircle, FaLongArrowAltUp } from "react-icons/fa";
 import clsx from "clsx";
 import { TbBellFilled } from "react-icons/tb";
+import startIcon from "@/public/images/icon/start.svg";
+import Image from "next/image";
 
 const CalendarStrip = () => {
     const [activeIndex, setActiveIndex] = useState(3);
@@ -103,54 +105,13 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
                                             <div className="absolute inset-0 rounded-full
                       bg-linear-to-b from-[#DDDDDD] to-[#7a7a7a]" />
 
-                                            {/* Top gradient border (rounded) */}
-                                            <div className="absolute top-0 inset-x-0 h-[2px]
-                      bg-gradient-to-r from-[#CACACA] via-[#919893] to-[#D8D8D8]
-                      rounded-t-full rounded-l-full rounded-r-full" />
+                                            
 
-                                            {/* Inner shine line (rounded) */}
-                                            {/* <div className="absolute top-[2px] inset-x-0 h-px
-                      bg-white/30 rounded-t-full" /> */}
+                                            
 
                                             <span className="relative z-10">Done</span>
                                         </button>
                                     </div>
-
-
-
-    //                 <div className="w-fit">
-    //                     <button
-    //                         className="
-    //   relative overflow-hidden
-    //   rounded-full
-    //   px-10 py-2
-    //   text-white text-2xl font-medium
-    //   bg-gradient-to-b from-[#DDDDDD] to-[#919893]
-    //   shadow-md
-    // "
-    //                     >
-    //                         {/* Top soft highlight */}
-    //                         <div
-    //                             className="
-    //     pointer-events-none
-    //     absolute top-0 left-0 w-full
-    //     h-[10%]
-    //     bg-gradient-to-r
-    //     from-[#CACACA]
-    //     via-[#D8D8D8]
-    //     to-[#CACACA]
-    //     rounded-t-full
-    //   "
-    //                         />
-
-    //                         <span className="relative z-10">Done</span>
-    //                     </button>
-    //                 </div>
-
-
-
-
-
                 ) : (
                     <button className={clsx(
                         "px-6 py-2.5 text-[10px] font-medium rounded-full  transition-all flex items-center gap-2 shadow-lg shadow-blue-200/50 cursor-pointer ",
@@ -160,7 +121,7 @@ const TaskRow = ({ title, label, labelType, time, timeIcon: Icon, action, action
                     )}>
                         {action === 'Upload' && <FaLongArrowAltUp className="bg-white/40 p-1 rounded-full" size={20} />}
                         {action === 'Remind Me' && <TbBellFilled size={20} className="bg-white/40 p-1 rounded-full" />}
-                        {action === 'Start' && <Play size={10} fill="currentColor" />}
+                        {action === 'Start' && <Image src={startIcon} width={16} height={16} alt="Start" />}
                         {action}
                     </button>
                 )}

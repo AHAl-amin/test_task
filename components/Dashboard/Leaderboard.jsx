@@ -6,7 +6,7 @@ import { User } from "lucide-react";
 const DiamondAvatar = ({ src, alt,i }) => (
     <div className={`w-10 h-10 flex items-center justify-center filter drop-shadow-sm ${i==0 || i==1 ? 'ms-5 me-3':'ms-5 me-3'}`}>
         <div className="w-8 h-8 relative">
-            <div className={`absolute inset-0  overflow-hidden border-2 border-white shadow-sm bg-gray-200 ${i==0 || i==1 ? 'transform rotate-45 rounded-[8px] scale-[1.75] transition-all':'border-[#FF0033] rounded-full scale-[1.5]'}`}>
+            <div className={`absolute inset-0  overflow-hidden  shadow-sm bg-gray-200 ${i==0 || i==1 ? 'transform rotate-45 rounded-[8px] scale-[1.75]  border-2 border-[#68B0EA] transition-all':'border-[#FF0033] rounded-full scale-[1.5]'}`}>
                 <Image width={100} height={100} src={src} alt={alt} className={`w-full h-full object-cover transform ${i==0 || i==1 ? '-rotate-45':''}`} />
             </div>
         </div>
@@ -16,11 +16,11 @@ const DiamondAvatar = ({ src, alt,i }) => (
 const LeaderboardItem = ({ rank, name, points, image,i }) => (
     <div className="flex items-center justify-between mb-3 px-4 py-3 bg-white hover:shadow-md rounded-2xl transition-all">
         <div className="flex items-center gap-4">
-            <span className="text-sm font-bold text-gray-400 w-4">#{rank}</span>
+            <span className="text-[16px] font-bold text-[#141B34] w-4">#{rank}</span>
             <DiamondAvatar src={image} alt={name} i={i} />
             <div>
-                <h4 className="text-sm font-bold text-gray-900">{name}</h4>
-                <p className="text-[10px] text-gray-400">{points}</p>
+                <h4 className="text-[16px] font-medium text-[#141B34]">{name}</h4>
+                <p className="text-[14px] text-gray-400">{points}</p>
             </div>
         </div>
     </div>

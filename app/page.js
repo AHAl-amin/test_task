@@ -10,7 +10,7 @@ import HeroSection from "@/components/Dashboard/HeroSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col pb-4 h-full">
+    <div className="flex flex-col pb-4 h-full md:pe-4">
       {/* Hero Section */}
 
       <HeroSection />

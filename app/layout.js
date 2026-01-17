@@ -25,9 +25,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className=""
-      style={{ backgroundImage: `url(${bg.src})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-      <body className={` text-foreground max-w-[1440px] mx-auto 2xl:px-0 xl:px-4 px-4 flex flex-col`}>
-
+      >
+        <body className="relative w-screen overflow-x-hidden bg-linear-to-tr from-[#CBE1FF]/50 via-[#E7F2F5] to-[#E7F2F5]">
+      <div className={` text-foreground max-w-[1440px] mx-auto 2xl:px-0 xl:px-4 px-4 flex flex-col `}>
+<div className='absolute -top-40 -right-32 rounded-full bg-radial from-[#BAD1FF] via-[#BAD1FF]/10 to-transparent w-[800px] h-[800px]'></div>
+        <div className='absolute top-[0%] -left-[300px] rounded-full bg-radial from-[#CBE1FF] via-[#CBE1FF]/20 to-transparent w-[700px] h-[700px]'></div>
+        <div className='absolute top-[15%] -right-[200px] rounded-full bg-radial from-[#AFF4FA] via-transparent to-transparent w-[900px] h-[1200px]'></div>
         <Navbar  />
 
 
@@ -37,6 +40,7 @@ export default function RootLayout({ children }) {
             {children}
           </main>
         </div>
+      </div>
       </body>
     </html>
   );

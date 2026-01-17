@@ -1,27 +1,28 @@
 import SectionHeader from "./SectionHeader";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { CiStar } from "react-icons/ci";
 
 const FeedbackItem = ({ name, role, time, rating, comment, avatar }) => {
     return (
-        <div className="mb-6 last:mb-0">
+        <div className="mb-6 last:mb-0 bg-white/40 p-4 gap-2 rounded-[21px]">
             <div className="flex justify-between items-start mb-2">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
                         <img src={avatar} alt={name} className="w-full h-full object-cover" />
                     </div>
                     <div>
-                        <h4 className="text-sm font-bold text-gray-900">{name}</h4>
-                        <p className="text-[10px] text-gray-400">{time}</p>
+                        <h4 className="text-sm font-bold text-[#141B34]">{name}</h4>
+                        <p className="text-[10px] text-[#141B34B2]/70">{time}</p>
                     </div>
                 </div>
                 <div className="flex gap-0.5">
                     {[1, 2, 3, 4, 5].map((s) => (
-                        <Star key={s} size={12} className={s <= rating ? "fill-amber-400 text-amber-400" : "fill-gray-200 text-gray-200"} />
+                        s <= rating ? <Star key={s} size={12} className="fill-[#FF8C1A] text-[#FF8C1A]" /> : <CiStar key={s} size={13} className="fill-[#FF8C1A] text-[#FF8C1A]" />
                     ))}
                 </div>
             </div>
-            <p className="text-xs text-gray-500 leading-relaxed">
+            <p className="text-xs text-[#141B34B2]/70 leading-relaxed">
                 {comment}
             </p>
         </div>
@@ -56,7 +57,7 @@ const CoachFeedback = () => {
     return (
         <div className="p-6 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 h-fit">
             <SectionHeader title="Coach Feedback" actionText="View More" />
-            <div className="flex flex-col">
+            <div className="flex flex-col  ">
                 {feedbacks.map((f, i) => (
                     <FeedbackItem key={i} {...f} />
                 ))}

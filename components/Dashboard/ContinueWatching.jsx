@@ -5,6 +5,7 @@ import { Play } from "lucide-react";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { FaCalendar, FaCalendarAlt } from "react-icons/fa";
+import { FaCirclePlay } from "react-icons/fa6";
 
 const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
     const videoRef = useRef(null);
@@ -25,7 +26,10 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
                     src={videoUrl}
                     poster={image}
                     className="w-full h-[127px] object-cover rounded-xl"
-                    
+                    onClick={()=>{
+                        videoRef.current.pause();
+                        setIsPlaying(false)
+                    }}
                     playsInline
                     onPause={() => setIsPlaying(false)}
                 >
@@ -34,12 +38,16 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
 
                 {/* Custom Play Button Overlay - Only visible when not playing */}
                 {!isPlaying && (
-                    <div
-                        className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center z-10"
-                        onClick={handlePlay}
-                    >
-                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/60 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
-                            <Play size={16} fill="white" className="text-white ml-1" />
+                    <div className="w-full h-full flex items-center justify-center  absolute inset-0 ">
+                        <div className=" rounded-full  inset-0 w-fit h-fit">
+                            <div
+                                className=" bg-black/10 group-hover:bg-black/20 transition-colors flex items-center justify-center rounded-full"
+                                onClick={handlePlay}
+                            >
+                                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md  flex items-center justify-center transition-transform shadow-[inset_1.3px_1.3px_0px_0px_rgba(255,255,255,0.6),inset_-1.3px_-1.3px_0px_0px_rgba(255,255,255,0.4)]">
+                                    <FaCirclePlay size={22} fill="white" className="text-white" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}

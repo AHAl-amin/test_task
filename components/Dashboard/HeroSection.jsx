@@ -43,28 +43,9 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                     {subValue && <p className="text-[11px] text-[#141b34a6]">{subValue}</p>}
                 </div>
                 <div className="relative w-12 h-12 shrink-0">
-                    <svg className="w-full h-full -rotate-[180deg]" viewBox="0 0 40 40">
-                        <defs>
-                            <linearGradient id={`grad-${title.replace(/\s+/g, '-')}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor={color === "green" ? "#B9F1D0" : "#83AFFF"} />
-                                <stop offset="100%" stopColor={color === "green" ? "#22c55e" : "#276EF1"} />
-                            </linearGradient>
-                        </defs>
-                        {/* Background arc */}
-                        <circle
-                            cx="20" cy="20" r="16"
-                            stroke="#f3f4f6" strokeWidth="4" fill="transparent"
-                            strokeDasharray="67 33.5" strokeOpacity="1" strokeLinecap="round"
-                        />
-                        {/* Progress arc */}
-                        <circle
-                            cx="20" cy="20" r="16"
-                            stroke={`url(#grad-${title.replace(/\s+/g, '-')})`}
-                            strokeWidth="4" fill="transparent"
-                            strokeDasharray="67 33.5"
-                            strokeDashoffset={67 - (67 * progress) / 100}
-                            strokeLinecap="round"
-                        />
+                    <svg width="48" height="48" viewBox="0 0 48 48" className="absolute inset-0">
+                        <circle cx="24" cy="24" r="20" stroke="#e5e7eb" strokeWidth="4" fill="none" />
+                        <circle cx="24" cy="24" r="20" stroke={color === "green" ? "#10b981" : color === "blue" ? "#5C8FF7" : "#FF8C1A"} strokeWidth="4" fill="none" strokeDasharray={`${(progress / 100) * 125.6} 125.6`} strokeLinecap="round" transform="rotate(90 24 24)" />
                     </svg>
                     <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-[#141B34] mt-[2px]">
                         {progress}%

@@ -1,10 +1,14 @@
 "use client";
 
 import SectionHeader from "./SectionHeader";
-import { Heart, MessageSquare, Reply, Share2, MoreVertical, PlayCircle, Play } from "lucide-react";
+import { Heart, MessageSquare, Reply, Share2, MoreVertical, PlayCircle, Play, CirclePlay, FilePenLine } from "lucide-react";
+import { BsChatSquareDots } from "react-icons/bs";
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { FaHeart } from "react-icons/fa";
 import { LiaShareSquareSolid } from "react-icons/lia";
+import sharIcon from "@/public/images/icon/elements.svg";
+import { FaCirclePlay } from "react-icons/fa6";
 
 const VideoPreview = ({ poster, videoUrl }) => {
     const videoRef = useRef(null);
@@ -39,7 +43,9 @@ const VideoPreview = ({ poster, videoUrl }) => {
             {!isPlaying && (
                 <>
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center z-10">
-                        <PlayCircle size={48} className="text-white fill-white/20" />
+                        <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md  flex items-center justify-center transition-transform shadow-[inset_1.3px_1.3px_0px_0px_rgba(255,255,255,0.6),inset_-1.3px_-1.3px_0px_0px_rgba(255,255,255,0.4)]">
+                                    <FaCirclePlay size={22} fill="white" className="text-white" />
+                                </div>
                     </div>
                     {/* Text Overlay - Only visible when not playing (or can keep it, but usually cleaner to hide) */}
                     <div className="absolute bottom-4 right-4 text-right z-20 pointer-events-none">
@@ -54,10 +60,20 @@ const VideoPreview = ({ poster, videoUrl }) => {
 
 const AnnouncementsPreview = () => {
     return (
-        <div className="mb-8">
-            <SectionHeader title="Announcements preview" actionText="View More" />
+        <div className="mb-8 shadow-inner shadow-white/70  rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100">
 
-            <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
+            <div className="flex items-center justify-between mb-4 bg-white/40 rounded-t-[24px] p-4">
+                <h3 className="text-xl font-semibold text-[#141B34]">Announcements preview</h3>
+                <button
+                    className="px-5 py-[10px] text-[10px] font-medium bg-linear-to-b from-[#5C8FF7] to-[#276AEE] text-[#FFFFFF]  rounded-full  transition-colors"
+
+                >
+                    View More
+                </button>
+            </div>
+
+        <div className="px-4 pb-4">
+                <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-4">
                     <div className="flex items-center gap-3">
@@ -65,7 +81,7 @@ const AnnouncementsPreview = () => {
                             <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=150&auto=format&fit=crop" alt="Sam Guy" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 className="text-sm font-bold text-gray-900">Sam Guy <span className="text-gray-400 font-normal">@samguy</span></h4>
+                            <h4 className="text-[16px] font-bold text-gray-900">Sam Guy <span className="text-gray-400 font-normal">@samguy</span></h4>
                             <p className="text-[10px] text-gray-400">2 hour ago</p>
                         </div>
                     </div>
@@ -73,13 +89,13 @@ const AnnouncementsPreview = () => {
 
                 {/* Content */}
                 <div className="mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">Live video session</h3>
-                    <p className="text-xs text-blue-500 font-medium mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 mb-1">Live video session</h3>
+                    <p className="text-sm text-[#5C8FF7] font-medium mb-3">
                         COACH GORDAN <span className="text-gray-400">&</span> COACH MCCULLUM <span className="text-gray-500">Live video session</span>
                     </p>
 
                     <VideoPreview
-                        poster="https://i.ibb.co.com/NgS18SHX/Screenshot-2026-01-15-213340.png"
+                        poster="https://i.ibb.co.com/qFVFyLVV/Screenshot-2026-01-17-233057.png"
                         videoUrl="https://v.ftcdn.net/01/43/50/73/240_F_143507322_Mz50QeuHAO2f5in4cb58a9XuVEQZc38o_ST.mp4"
                     />
                 </div>
@@ -87,17 +103,17 @@ const AnnouncementsPreview = () => {
                 {/* Actions */}
                 <div className="flex items-center justify-between">
                     <div className="flex gap-2">
-                        <button className="px-4 py-1.5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center gap-1 hover:bg-red-600 transition-colors">
-                            <PlayCircle size={12} fill="currentColor" /> JOIN LIVE
+                        <button className="px-4 py-2 bg-gradient-to-b  from-[#FF6565] to-[#EC4213] text-white text-[10px] font-medium rounded-full flex items-center gap-1 hover:bg-red-600 transition-colors space-x-2 cursor-pointer">
+                            <CirclePlay size={20} /> <span>join LIVE</span>
                         </button>
-                        <button className="px-4 py-1.5 bg-blue-50 text-blue-500 text-[10px] font-bold rounded-full flex items-center gap-1 hover:bg-blue-100 transition-colors">
-                            <Reply size={12} /> RSVP to Practice
+                        <button className="px-4 py-2 bg-[#457FF326] text-blue-500 text-[10px] font-bold rounded-full flex items-center gap-1 hover:bg-blue-100 transition-colors">
+                            <FilePenLine size={20} /> RSVP to Practice
                         </button>
                     </div>
 
                     <div className="flex items-center gap-4 text-gray-400 text-[10px] font-medium">
-                        <span className="flex items-center gap-1 hover:text-red-500 cursor-pointer transition-colors"><Heart size={14} /> 22 Likes</span>
-                        <span className="flex items-center gap-1 hover:text-blue-500 cursor-pointer transition-colors"><MessageSquare size={14} /> 24 Replies</span>
+                        <span className="flex items-center gap-1 hover:text-red-500 cursor-pointer transition-colors"><FaHeart size={16} className="text-[#FF3939]" /> 22 Likes</span>
+                        <span className="flex items-center gap-1 hover:text-blue-500 cursor-pointer transition-colors"><BsChatSquareDots size={16} /> 24 Replies</span>
                     </div>
                 </div>
             </div>
@@ -110,34 +126,35 @@ const AnnouncementsPreview = () => {
                             <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=150&auto=format&fit=crop" alt="Sam Guy" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                            <h4 className="text-sm font-bold text-gray-900">Sam Guy <span className="text-gray-400 font-normal">@samguy</span></h4>
+                            <h4 className="text-[16px] font-bold text-[#0F1419]">Sam Guy <span className="text-gray-400 font-normal">@samguy</span></h4>
                             <p className="text-[10px] text-gray-400">8 hour ago</p>
                         </div>
                     </div>
                     <div className="flex gap-2 text-gray-400 items-center">
-                        <LiaShareSquareSolid  size={20} />
+                        <Image src={sharIcon} width={16} height={16} alt="Share" className="cursor-pointer hover:text-gray-600 transition-colors" />
                         <MoreVertical size={16} />
                     </div>
                 </div>
 
                 <div className="mb-4">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">Casual Ride!</h3>
-                    <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                    <h3 className="text-xl font-bold text-[#0F1419] mb-1">Casual Ride!</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed mb-3">
                         Join us for our Friday morning casual bike ride around central park! We will meet you all @6AM EST<br />
                         near Great Lawn Softball Field 7!
                     </p>
 
-                    <div className="relative w-full h-40 rounded-xl overflow-hidden bg-blue-50">
-                        {/* Map Placeholder */}
-                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop")' }}></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-8 h-8 rounded-full bg-red-500 border-2 border-white flex items-center justify-center shadow-lg">
-                                <div className="w-2 h-2 bg-white rounded-full"></div>
-                            </div>
-                        </div>
+                    <div className="relative w-full h-50 rounded-xl overflow-hidden bg-blue-50">
+                        <iframe
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-73.97,-40.78,-73.96,40.79&layer=mapnik&marker=40.7812,-73.9665"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            title="Map of Great Lawn, Central Park"
+                        ></iframe>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

@@ -36,7 +36,7 @@ const RecentActivity = () => {
         <div className="px-6 py-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 h-fit">
             <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
-                    <h3 className="text-xl font-semibold text-[#141B34]">Recent Activity</h3>
+                    <h3 className="2xl:text-xl text-[16px] font-semibold text-[#141B34]">Recent Activity</h3>
                     <span className="bg-red-200 text-red-500 text-[10px] font-bold  p-1 rounded-full flex items-center gap-1">
                         <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                     </span>
