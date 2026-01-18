@@ -3,17 +3,17 @@ import SectionHeader from "./SectionHeader";
 import { User } from "lucide-react";
 
 // Helper for diamond shape avatar
-const DiamondAvatar = ({ src, alt,i }) => (
-    <div className={`w-10 h-10 flex items-center justify-center filter drop-shadow-sm ${i==0 || i==1 ? 'ms-5 me-3':'ms-5 me-3'}`}>
+const DiamondAvatar = ({ src, alt, i }) => (
+    <div className={`w-10 h-10 flex items-center justify-center filter drop-shadow-sm ${i == 0 || i == 1 ? 'ms-5 me-3' : 'ms-5 me-3'}`}>
         <div className="w-8 h-8 relative">
-            <div className={`absolute inset-0  overflow-hidden  shadow-sm bg-gray-200 ${i==0 || i==1 ? 'transform rotate-45 rounded-[8px] scale-[1.75]  border-2 border-[#68B0EA] transition-all':'border-[#FF0033] rounded-full scale-[1.5]'}`}>
-                <Image width={100} height={100} src={src} alt={alt} className={`w-full h-full object-cover transform ${i==0 || i==1 ? '-rotate-45':''}`} />
+            <div className={`absolute inset-0  overflow-hidden  shadow-sm bg-gray-200 ${i == 0 || i == 1 ? 'transform rotate-45 rounded-[8px] scale-[1.75]  border-2 border-[#68B0EA] transition-all' : 'border-[#FF0033] rounded-full scale-[1.5]'}`}>
+                <Image width={100} height={100} src={src} alt={alt} className={`w-full h-full object-cover transform ${i == 0 || i == 1 ? '-rotate-45' : ''}`} />
             </div>
         </div>
     </div>
 );
 
-const LeaderboardItem = ({ rank, name, points, image,i }) => (
+const LeaderboardItem = ({ rank, name, points, image, i }) => (
     <div className="flex items-center justify-between mb-3 px-4 py-3 bg-white hover:shadow-md rounded-2xl transition-all">
         <div className="flex items-center gap-4">
             <span className="text-[16px] font-bold text-[#141B34] w-4">#{rank}</span>
@@ -55,30 +55,30 @@ const Leaderboard = () => {
                         backgroundImage: "url('/section/Frame 2147238986.svg')",
                     }}>
 
-                    {/* Top 3 Podium */}
+                        {/* Top 3 Podium */}
                         <p className="text-center font-bold text-gray-800 mb-8">Jan 2025</p>
-                    <div className="flex items-end justify-center gap-2 mb-32 ">
-                        {/* 2nd Place */}
-                        <div className="flex flex-col items-center -mr-4 z-10 mb-4">
-                            <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
-                                <Image width={200} height={200} src="/section/Group 2085665490.png" alt="2nd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
+                        <div className="flex items-end justify-center gap-2 mb-32 ">
+                            {/* 2nd Place */}
+                            <div className="flex flex-col items-center -mr-4 z-10 mb-4">
+                                <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
+                                    <Image width={200} height={200} src="/section/Group 2085665490.png" alt="2nd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* 1st Place */}
-                        <div className="flex flex-col items-center z-20">
-                            <div className="relative w-[200px] h-[200px] transition-transform duration-300">
-                                <Image width={200} height={200} src="/section/Group 2085665474.png" alt="1st Place" className="w-full h-[300px] object-contain drop-shadow-xl -mt-10" />
+                            {/* 1st Place */}
+                            <div className="flex flex-col items-center z-20">
+                                <div className="relative w-[200px] h-[200px] transition-transform duration-300">
+                                    <Image width={200} height={200} src="/section/Group 2085665474.png" alt="1st Place" className="w-full h-[300px] object-contain drop-shadow-xl -mt-10" />
+                                </div>
                             </div>
-                        </div>
 
-                        {/* 3rd Place */}
-                        <div className="flex flex-col items-center -ml-4 z-10 mb-4">
-                            <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
-                                <Image width={200} height={200} src="/section/Group 2085665491.png" alt="3rd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
+                            {/* 3rd Place */}
+                            <div className="flex flex-col items-center -ml-4 z-10 mb-4">
+                                <div className="relative w-[150px] h-[160px]  transition-transform duration-300">
+                                    <Image width={200} height={200} src="/section/Group 2085665491.png" alt="3rd Place" className="w-full h-[200px] object-contain drop-shadow-lg" />
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </div>
 
                     {/* List Items */}

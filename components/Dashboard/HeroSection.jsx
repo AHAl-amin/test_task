@@ -42,12 +42,43 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                     <p className="text-[12px] text-[#141B34B2] font-bold mb-0.5">{title}</p>
                     {subValue && <p className="text-[11px] text-[#141b34a6]">{subValue}</p>}
                 </div>
-                <div className="relative w-12 h-12 shrink-0">
-                    <svg width="48" height="48" viewBox="0 0 48 48" className="absolute inset-0">
-                        <circle cx="24" cy="24" r="20" stroke="#e5e7eb" strokeWidth="4" fill="none" />
-                        <circle cx="24" cy="24" r="20" stroke={color === "green" ? "#10b981" : color === "blue" ? "#5C8FF7" : "#FF8C1A"} strokeWidth="4" fill="none" strokeDasharray={`${(progress / 100) * 125.6} 125.6`} strokeLinecap="round" transform="rotate(90 24 24)" />
+                <div className="relative w-14 h-14 shrink-0 -me-2">
+                    <svg width="56" height="56" viewBox="0 0 56 56" className="transform rotate-135">
+                        {/* Track Arc */}
+                        <circle
+                            cx="28"
+                            cy="28"
+                            r="22"
+                            stroke={color === "green" ? "#10b98120" : color === "blue" ? "#5C8FF720" : "#FF8C1A20"}
+                            strokeWidth="6"
+                            fill="none"
+                            strokeDasharray="103.6 138.2"
+                            strokeLinecap="round"
+                        />
+                        {/* Progress Arc */}
+                        <circle
+                            cx="28"
+                            cy="28"
+                            r="22"
+                            stroke={color === "green" ? "#10b981" : color === "blue" ? "#5C8FF7" : "#FF8C1A"}
+                            strokeWidth="6"
+                            fill="none"
+                            strokeDasharray={`${(progress / 100) * 103.6} 138.2`}
+                            strokeLinecap="round"
+                        />
+                        {/* Dotted Inner Circle */}
+                        <circle
+                            cx="28"
+                            cy="28"
+                            r="17"
+                            stroke={color === "green" ? "#10b981" : color === "blue" ? "#5C8FF7" : "#FF8C1A"}
+                            strokeWidth="1"
+                            fill="none"
+                            strokeDasharray="1, 3"
+                            opacity="0.3"
+                        />
                     </svg>
-                    <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-[#141B34] mt-[2px]">
+                    <span className="absolute inset-0 flex items-center justify-center text-[12px] font-bold text-[#141B34]">
                         {progress}%
                     </span>
                 </div>
