@@ -73,7 +73,7 @@ const AnnouncementsPreview = () => {
             </div>
 
             <div className="px-4 pb-4 ">
-                <div className="bg-white p-6 rounded-[2rem]  ">
+                <div className="bg-[#FFFFFF] p-6 rounded-[2rem]  ">
                     {/* Header */}
                     <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center gap-3">
@@ -119,7 +119,7 @@ const AnnouncementsPreview = () => {
                 </div>
 
                 {/* Second Post Preview (Casual Ride) */}
-                <div className="bg-white p-6 rounded-[2rem] mt-4 ">
+                <div className="bg-[#FFFFFF] p-6 rounded-[2rem] mt-4 ">
                     <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">

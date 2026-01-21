@@ -28,8 +28,8 @@ const LeaderboardItem = ({ rank, name, points, image, i }) => (
 
 const Leaderboard = () => {
     const leaders = [
-        { rank: 5, name: "Ronald Richards", points: 197, image: "https://plus.unsplash.com/premium_photo-1664536392779-049ba8fde933?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { rank: 4, name: "Jane Cooper", points: 210, image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop" },
+        { rank: 4, name: "Ronald Richards", points: 197, image: "https://plus.unsplash.com/premium_photo-1664536392779-049ba8fde933?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { rank: 5, name: "Jane Cooper", points: 210, image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2561&auto=format&fit=crop" },
         { rank: 6, name: "Marvin McKinney", points: 185, image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2574&auto=format&fit=crop" },
         { rank: 7, name: "Kristin Watson", points: 184, image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2576&auto=format&fit=crop" },
         { rank: 8, name: "Esther Howard", points: 172, image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=2574&auto=format&fit=crop" },
