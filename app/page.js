@@ -15,11 +15,11 @@ export default function Home() {
 
       <HeroSection />
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-8">
+      <div className="grid grid-cols-1 gap-4">
 
         {/* SECTION 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 grid  gap-1  shadow-inner shadow-white/70 p-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100">
+          <div className="lg:col-span-2 grid  gap-2  shadow-inner shadow-white/70 p-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100">
             <ContinueWatching />
             <TodaysTasks />
           </div>

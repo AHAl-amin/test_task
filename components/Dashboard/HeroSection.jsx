@@ -44,7 +44,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                 </div>
                 <div className="relative w-14 h-14 shrink-0 -me-2">
                     <svg width="56" height="56" viewBox="0 0 56 56" className="transform rotate-135">
-                       
+
                         <circle
                             cx="28"
                             cy="28"
@@ -55,7 +55,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                             strokeDasharray="103.6 138.2"
                             strokeLinecap="round"
                         />
-                       
+
                         <circle
                             cx="28"
                             cy="28"
@@ -66,7 +66,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                             strokeDasharray={`${(progress / 100) * 103.6} 138.2`}
                             strokeLinecap="round"
                         />
-                       
+
                         <circle
                             cx="28"
                             cy="28"
@@ -89,31 +89,31 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
 
 const HeroSection = () => {
     return (
-        <div className="w-full rounded-[30px] relative mb-8 
+        <div className="w-full rounded-[28px] relative mb-4 
          overflow-hidden min-h-[450px] ">
-           
+
             <div
                 className="absolute inset-0 bg-cover bg-center no-repeat   rounded-[30px]"
                 style={{
                     backgroundImage: `url(${banner.src})`,
                 }}
             />
-           
+
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#FFFFFF] via-[#FFFFFF]/50 to-transparent " />
 
-          
+
             <div className="relative z-10 p-6  flex flex-col justify-between min-h-[450px] gap-8">
-               
+
                 <div>
                     <h2 className="text-3xl md:text-5xl font-semibold text-[#FFFFFF] mt-5  poppins ">
                         The QB Fundamentals
                     </h2>
                 </div>
 
-               
+
                 <div className="flex flex-col lg:flex-row items-end justify-between gap-6 pointer-events-none">
 
-                   
+
                     <div className="flex flex-wrap items-center gap-2 pointer-events-auto w-full lg:flex-1">
                         <StatItem
                             title="Total Athletes"

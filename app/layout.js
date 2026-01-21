@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           <Navbar />
 
 
-          <div className="flex   gap-2 md:gap-6 pb-2 ">
+          <div className="flex   gap-2 md:gap-4 pb-2 ">
             <Sidebar />
             <main className="flex-1 overflow-y-auto pt-3 hide-scrollbar relative rounded-2xl  ">
               {children}
