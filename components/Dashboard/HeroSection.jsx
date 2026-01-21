@@ -44,7 +44,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                 </div>
                 <div className="relative w-14 h-14 shrink-0 -me-2">
                     <svg width="56" height="56" viewBox="0 0 56 56" className="transform rotate-135">
-                        {/* Track Arc */}
+                       
                         <circle
                             cx="28"
                             cy="28"
@@ -55,7 +55,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                             strokeDasharray="103.6 138.2"
                             strokeLinecap="round"
                         />
-                        {/* Progress Arc */}
+                       
                         <circle
                             cx="28"
                             cy="28"
@@ -66,7 +66,7 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
                             strokeDasharray={`${(progress / 100) * 103.6} 138.2`}
                             strokeLinecap="round"
                         />
-                        {/* Dotted Inner Circle */}
+                       
                         <circle
                             cx="28"
                             cy="28"
@@ -89,30 +89,31 @@ const StatItem = ({ title, value, subValue, trend, icon: Icon, type = "normal", 
 
 const HeroSection = () => {
     return (
-        <div className="w-full rounded-[30px] relative mb-8 overflow-hidden min-h-[450px] ">
-            {/* Background Image */}
+        <div className="w-full rounded-[30px] relative mb-8 
+         overflow-hidden min-h-[450px] ">
+           
             <div
-                className="absolute inset-0 bg-cover bg-center no-repeat   rounded-[24px]"
+                className="absolute inset-0 bg-cover bg-center no-repeat   rounded-[30px]"
                 style={{
                     backgroundImage: `url(${banner.src})`,
                 }}
             />
-            {/* Gradient Overlay */}
-            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#FFFFFF] via-[#FFFFFF]/50 to-transparent border-x border-b" />
+           
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-[#FFFFFF] via-[#FFFFFF]/50 to-transparent " />
 
-            {/* Content Container */}
+          
             <div className="relative z-10 p-6  flex flex-col justify-between min-h-[450px] gap-8">
-                {/* Title */}
+               
                 <div>
                     <h2 className="text-3xl md:text-5xl font-semibold text-[#FFFFFF] mt-5  poppins ">
                         The QB Fundamentals
                     </h2>
                 </div>
 
-                {/* Bottom Section - Grid for Stats & Streak */}
+               
                 <div className="flex flex-col lg:flex-row items-end justify-between gap-6 pointer-events-none">
 
-                    {/* Stats Row */}
+                   
                     <div className="flex flex-wrap items-center gap-2 pointer-events-auto w-full lg:flex-1">
                         <StatItem
                             title="Total Athletes"

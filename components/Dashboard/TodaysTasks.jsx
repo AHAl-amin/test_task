@@ -134,11 +134,11 @@ const TodaysTasks = () => {
     return (
         <div className="">
 
-            <div className=" px-6 pt-6 rounded-2xl shadow-sm border border-gray-100 bg-white/20 backdrop-blur-sm">
+            <div className=" px-6 pt-6 rounded-2xl  border border-[#FFFFFF4D] bg-white/20 backdrop-blur-sm ">
                 <SectionHeader title="Todays tasks" actionText="View Entire Schedule" />
                 <CalendarStrip />
 
-                <div className="flex flex-col">
+                <div className="flex flex-col ">
                     <TaskRow
                         title="Linebacker Drills"
                         label="Video submission required"

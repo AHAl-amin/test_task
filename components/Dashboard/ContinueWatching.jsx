@@ -19,14 +19,14 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
     };
 
     return (
-        <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-3  min-w-[200px] flex-1">
+        <div className="bg-[#FFFFFF66] hover:bg-[#FFFFFF] transition-all trasnform  p-3 rounded-2xl  flex flex-col gap-3  min-w-[200px]  flex-1 cursor-pointer ">
             <div className="relative max-h-[249px] rounded-xl overflow-hidden group cursor-pointer">
                 <video
                     ref={videoRef}
                     src={videoUrl}
                     poster={image}
                     className="w-full h-[127px] object-cover rounded-xl"
-                    onClick={()=>{
+                    onClick={() => {
                         videoRef.current.pause();
                         setIsPlaying(false)
                     }}
@@ -54,22 +54,27 @@ const VideoCard = ({ title, status, progress, dueDate, image, videoUrl }) => {
             </div>
 
 
-            <div className="mt-auto space-y-3">
-                <div>
-                    <h4 className="font-medium text-[12px] text-[#141B34] w-full  ">{title}</h4>
+            <div className="mt-auto s">
+
+                <div className="mb-1 flex items-center min-h-[40px]">
+                    <h4 className="font-medium text-[14px] text-[#141B34] w-full">{title}</h4>
                 </div>
-                <div className="w-full h-2.5 bg-[#C4D4FD] rounded-full overflow-hidden">
-                    <div
-                        className={`h-full rounded-full ${status === 'Complete' ? 'bg-green-500' : 'bg-gradient-to-r from-[#7180DF] to-[#2C49FF]'}`}
-                        style={{ width: `${progress}%` }}
-                    ></div>
-                </div>
-                <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 ">
-                    <span className="flex items-center gap-1">
-                        <span className={`w-3 h-3 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-gradient-to-b from-[#7180DF] to-[#2C49FF] '}`}></span>
-                        {progress}% Complete
-                    </span>
-                    <span className="flex items-center gap1 text-xs"><FaCalendarAlt className="me-1.5 text-gray-400" /> <span>{dueDate}</span></span>
+
+                <div className="space-y-3">
+                    <div className="w-full h-[7px] bg-[#C4D4FD] rounded-full overflow-hidden">
+                        <div
+                            className={`h-full rounded-full 
+                            ${status === 'Complete' ? 'bg-green-500' : 'bg-linear-to-r from-[#7180DF] to-[#2C49FF]'}`}
+                            style={{ width: `${progress}%` }}
+                        ></div>
+                    </div>
+                    <div className="flex items-center justify-between text-xs text-gray-500 mb-1.5 ">
+                        <span className="flex items-center gap-1">
+                            <span className={`w-3 h-3 rounded-sm ${status === 'Complete' ? 'bg-green-500' : 'bg-linear-to-b from-[#7180DF] to-[#2C49FF] '}`}></span>
+                            {progress}% Complete
+                        </span>
+                        <span className="flex items-center gap1 text-xs"><FaCalendarAlt className="me-1.5 text-gray-400" /> <span>{dueDate}</span></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,9 +107,9 @@ const ContinueWatching = () => {
     ];
 
     return (
-        <div className=" ">
+        <div className="  ">
             <SectionHeader title="Continue Where You Left Off" actionText="View More" />
-            <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
+            <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar ">
                 {items.map((item, i) => (
                     <VideoCard key={i} {...item} />
                 ))}

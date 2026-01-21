@@ -5,7 +5,7 @@ import { CiStar } from "react-icons/ci";
 
 const FeedbackItem = ({ name, role, time, rating, comment, avatar }) => {
     return (
-        <div className="mb-6 last:mb-0 bg-white/40 p-4 gap-2 rounded-[21px]">
+        <div className="mb-3 last:mb-0 bg-white/40 p-4 gap-2 rounded-[21px]">
             <div className="flex justify-between items-start mb-2">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
@@ -55,7 +55,7 @@ const CoachFeedback = () => {
     ];
 
     return (
-        <div className="p-6 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 h-fit">
+        <div className="p-5 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100 max-h-[480px] overflow-y-auto hide-scrollbar">
             <SectionHeader title="Coach Feedback" actionText="View More" />
             <div className="flex flex-col  ">
                 {feedbacks.map((f, i) => (

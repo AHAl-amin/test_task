@@ -19,7 +19,7 @@ export default function Home() {
 
         {/* SECTION 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 grid gap-4  shadow-inner shadow-white/70 p-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100">
+          <div className="lg:col-span-2 grid  gap-1  shadow-inner shadow-white/70 p-4 rounded-[24px]   bg-white/20 backdrop-blur-sm border border-gray-100">
             <ContinueWatching />
             <TodaysTasks />
           </div>
@@ -31,9 +31,9 @@ export default function Home() {
         </div>
 
         {/* SECTION 2 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 ">
           <AnnouncementsPreview />
-          <Leaderboard />
+          <Leaderboard className="" />
         </div>
 
       </div>
